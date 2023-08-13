@@ -26,3 +26,6 @@ Rooms/Teachers/Students: Timers can be registered with the room they are assigne
 Account/ID Verification: The app provides account and ID verification functionalities to ensure secure access and restrict timer modifications to authorized users. School-based accounts and IDs are used for authentication.
 Colour Mode: The app automatically detects the default native color mode of the operating system and implements it, providing a seamless and consistent user experience.
 Utilize Blank Space: The app utilizes blank space and neutral colors to improve aesthetics and prevent clutter, resulting in a clean and high
+
+
+https://www.youtube.com/watch?v=hDu8mcAlY4E 

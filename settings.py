@@ -9,7 +9,14 @@ pygame.init()
 # getting screen data and size 
 screen_info = pygame.display.Info()
 SCREEN_WIDTH = screen_info.current_w
-SCREEN_HEIGHT = screen_info.current_h
+SCREEN_HEIGHT = screen_info.current_h * 0.95
+
+
+SLOTS = {
+    1: (845, 220),
+    2: (845, 470),
+    3: (845, 715)
+}
 
 # font 
 FONT = pygame.font.Font(None, 36)
@@ -17,8 +24,13 @@ FONT = pygame.font.Font(None, 36)
 # colours 
 COLOURS = {
     "black": (0, 0, 0), 
-    "white": (255, 255, 255)
+    "white": (255, 255, 255),
+    "inactive": (100, 100, 100),
+    "active": (120, 300, 50)
 }
+
+# COLOR_INACTIVE = pygame.Color('lightskyblue3')
+# COLOR_ACTIVE = pygame.Color('dodgerblue2')
 
 # frame rate of game 
 FPS = 60 
@@ -53,20 +65,10 @@ except:
     default --> light  """)
     COLOUR_MODE = "light"
 
+# home screens 
 
-
-
-# class TimerSettings:
-#     def __init__(self):
-#         self.timer_duration = 0
-#         self.reading_time = 0
-#         self.time_warnings = []
-    
-#     def set_timer_duration(self, duration):
-#         self.timer_duration = duration
-    
-#     def set_reading_time(self, time):
-#         self.reading_time = time
-    
-#     def set_time_warnings(self, warnings):
-#         self.time_warnings = warnings
+SCREENS = {
+    "home": "images/home screen.png", 
+    "main": "images/main screen.png",
+    "instructions": "images/instruction screen.png"
+}

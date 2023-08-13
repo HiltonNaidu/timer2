@@ -3,11 +3,14 @@ The purpose of this file is to be the only file that the user interacts with
 it is designed so that the user can run one file and then it works 
 """
 
-
-
 import pygame
 import utility
 from settings import * 
+from colors import Background
+from button import Button
+from timer import Timer
+from mode import main_screen
+from log import change_log
 
 class ExamTimerApp:
     def __init__(self):
@@ -23,7 +26,27 @@ class ExamTimerApp:
 
         # sets a pygame clock 
         self.clock = pygame.time.Clock()
-    
+
+        # setting the mode as "home" which is default 
+        self.mode = 'home'
+
+        # making the background from the class 
+        self.background = Background(self.mode, [0,0])
+
+        # setting all the pygame sprite groups 
+        self.buttons_home_screen = pygame.sprite.Group()
+        self.buttons_main_scrren = pygame.sprite.Group()
+        self.buttons_instruction_screen = pygame.sprite.Group()
+        # self.timers = pygame.sprite.Group()
+
+        self.main_screen = main_screen(self.screen, self)
+
+        self.buttons_instruction_screen.add(Button(11, (125, 805), "images/back button.png", self.background.home))
+
+        self.buttons_home_screen.add(Button(11, (395, 545), "images/instruction button.png", self.background.instructions))
+        self.buttons_home_screen.add(Button(11, (720, 545), "images/start button.png", self.background.main))
+        self.buttons_home_screen.add(Button(11, [1045, 545], "images/exit button (home).png", self.terminate))
+
     def run(self):
         # Start the main application loop
         while True:
@@ -31,36 +54,62 @@ class ExamTimerApp:
             for event in pygame.event.get():
 
                 if event.type == pygame.QUIT:
-                    self.terminate()
+                    self.terminate() 
+                
+                self.main_screen.deal_with_events(event)
 
-                self.handle_input(event)
- 
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    print(pygame.mouse.get_pos())
+
+                # self.handle_input(event)
+            
+
+
+
+
+            
+            # filling the screen a basic black colour 
             self.screen.fill('black')
-            # self.mode.run()
+            # drawing the backround onto the screen 
+            self.screen.blit(self.background.image, self.background.rect)
+
+            self.mode = self.background.mode
+
+            # draw all the buttons for the home screen
+            if self.mode == "home":
+                self.buttons_home_screen.update(event)
+                self.buttons_home_screen.draw(self.screen)
+
+            if self.mode == "main":
+                self.main_screen.run(event)
+
+            if self.mode == "instructions":
+                self.buttons_instruction_screen.update(event)
+                self.buttons_instruction_screen.draw(self.screen)
+
+            
             pygame.display.flip()
+
             self.clock.tick(FPS)
     
-    def handle_input(self, event):
-        # Handle user input and events
-        # if event.type == pygame.KEYDOWN:
-        #     if event.key == pygame.K_a:
-        #         self.mode.create_clock()
-        pass
+    # def handle_input(self, event):
+    #     pass
     
-    def update_timers(self):
-        # Update the timers and their states
-        pass
-    
-    def display_timers(self):
-        # Display the timers and their information on the UI
-        pass
 
     def terminate(self):
         utility.error_log.create_log_recipt("error log")
+
         # end threads 
+        self.main_screen.end()
+
+        change_log.create_log_recipt("change_log.txt")
+
         pygame.quit()
         sys.exit()
 
+    
+
 # Create an instance of the application
-app = ExamTimerApp()
-app.run()
+if OS == "macos":
+    app = ExamTimerApp()
+    app.run()
