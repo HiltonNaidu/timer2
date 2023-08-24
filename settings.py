@@ -1,6 +1,7 @@
 import pygame
 import sys 
 import utility
+import os 
 
 # initialise pygame 
 pygame.init()
@@ -64,11 +65,18 @@ except:
     utility.error_message("""no detected colour mode
     default --> light  """)
     COLOUR_MODE = "light"
+# COLOUR_MODE = "light"
 
 # home screens 
 
 SCREENS = {
-    "home": "images/home screen.png", 
-    "main": "images/main screen.png",
-    "instructions": "images/instruction screen.png"
+    "home": os.path.join(COLOUR_MODE, "home screen.png"),
+    "main": os.path.join(COLOUR_MODE, "main screen.png"),
+    "instructions": os.path.join(COLOUR_MODE, "instruction screen.png")
+}
+
+
+USERS = {
+    "admin": "password", 
+    "Maxwell": "123123"
 }

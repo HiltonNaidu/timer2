@@ -1,4 +1,2 @@
-None into hello
-1 into 200
-0 into 5
- into nothing 
+Username into admin
+Password into password
