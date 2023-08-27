@@ -23,7 +23,6 @@ class Clock(threading.Thread):
         self.lock = threading.Lock()
 
         self.current_time = 0
-        # self.cooldown = 0
 
         self.click_sound = pygame.mixer.Sound(os.path.join("sound","mixkit-one-clap-481.wav"))
 
