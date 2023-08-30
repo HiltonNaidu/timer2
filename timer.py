@@ -24,7 +24,8 @@ class Clock(threading.Thread):
 
         self.current_time = 0
 
-        self.click_sound = pygame.mixer.Sound(os.path.join("sound","mixkit-one-clap-481.wav"))
+        self.finish_sound = pygame.mixer.Sound(os.path.join("sound","digital-alarm-3-151917.mp3"))
+        self.reading_sound = pygame.mixer.Sound(os.path.join("sound","positive_beeps-85504.mp3"))
 
     def run(self):
         while not self.finished:
@@ -32,12 +33,18 @@ class Clock(threading.Thread):
                 if not self.paused:
                     if self.reading_time > 0:
                         self.reading_time -= 1
+                        if self.reading_time == 0:
+                            self.reading_sound.play()
+
                     else:
                         self.duration -= 1
+                        
 
                     if self.duration <= 0:
                         self.paused = True
+                        self.finish_sound.play()
                         self.duration = 0
+
 
             self.duration_min = self.duration // 60
             self.reading_time_min = self.reading_time // 60

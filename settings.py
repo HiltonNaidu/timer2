@@ -6,12 +6,11 @@ import os
 # initialise pygame 
 pygame.init()
 
-
 # getting screen data and size 
 screen_info = pygame.display.Info()
 SCREEN_WIDTH = screen_info.current_w
 SCREEN_HEIGHT = screen_info.current_h * 0.95
-
+print(SCREEN_WIDTH, SCREEN_HEIGHT)
 
 SLOTS = {
     1: (845, 220),
@@ -29,9 +28,6 @@ COLOURS = {
     "inactive": (100, 100, 100),
     "active": (120, 300, 50)
 }
-
-# COLOR_INACTIVE = pygame.Color('lightskyblue3')
-# COLOR_ACTIVE = pygame.Color('dodgerblue2')
 
 # frame rate of game 
 FPS = 60 
@@ -65,7 +61,6 @@ except:
     utility.error_message("""no detected colour mode
     default --> light  """)
     COLOUR_MODE = "light"
-# COLOUR_MODE = "light"
 
 # home screens 
 
@@ -74,7 +69,6 @@ SCREENS = {
     "main": os.path.join(COLOUR_MODE, "main screen.png"),
     "instructions": os.path.join(COLOUR_MODE, "instruction screen.png")
 }
-
 
 USERS = {
     "admin": "password", 
