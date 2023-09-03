@@ -121,3 +121,7 @@ if OS == "macos":
     
     app = ExamTimerApp()
     app.run()
+
+else:
+    app = ExamTimerApp()
+    app.run()

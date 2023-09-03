@@ -44,7 +44,7 @@ except:
     default --> MacOS
     """)
 
-    OS = systems["darwin"]
+    OS = systems["win32"]
 
 
 # system colour mode 

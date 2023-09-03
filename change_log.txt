@@ -1,2 +1,3 @@
 Username into admin
-Password into password
+Password into passowrd
+passowrd into password
