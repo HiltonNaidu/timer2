@@ -6,11 +6,7 @@ import os
 # initialise pygame 
 pygame.init()
 
-# getting screen data and size 
-screen_info = pygame.display.Info()
-SCREEN_WIDTH = screen_info.current_w
-SCREEN_HEIGHT = screen_info.current_h * 0.95
-print(SCREEN_WIDTH, SCREEN_HEIGHT)
+
 
 SLOTS = {
     1: (845, 220),
@@ -74,3 +70,17 @@ USERS = {
     "admin": "password", 
     "Maxwell": "123123"
 }
+
+
+# getting screen data and size 
+
+if OS == "macos":
+
+    screen_info = pygame.display.Info()
+    SCREEN_WIDTH = screen_info.current_w
+    SCREEN_HEIGHT = screen_info.current_h * 0.95
+    # print(SCREEN_WIDTH, SCREEN_HEIGHT)
+
+else:
+    SCREEN_WIDTH = 1440
+    SCREEN_HEIGHT = 855

@@ -135,10 +135,10 @@ class Timer(pygame.sprite.Sprite):
 
             try:
                 self.width = 595 - (self.clock.duration / self.clock.initial_duration * 595)
+                self.colour.hsva = (int(self.clock.duration / self.clock.initial_duration * 118), 100, 100, 100)
             except ZeroDivisionError:
                 pass
 
-            self.colour.hsva = (int(self.clock.duration / self.clock.initial_duration * 118), 100, 100, 100)
             pygame.draw.rect(self.image, self.colour, pygame.Rect(33, 119, self.width, 62), 0)
         else:
             self.bar_surface = pygame.image.load(os.path.join(COLOUR_MODE, "reading time.png"))
